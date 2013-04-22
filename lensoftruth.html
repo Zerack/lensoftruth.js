@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+  <title>Lens Of Truth</title>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    
+    p {
+      margin: 0px 0px 10px 0px;
+    }
+  
+    div {
+      margin-bottom: 10px;
+      padding: 3px;
+      width: 80px;
+      text-align: center;
+      border: 1px solid #333333;
+      background-color: #CFCFCF;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lensoftruth.js Tests</h1>
+  <h3>Single Node Tests</h3>
+  <p><strong>Key Undefined</strong> - The div below should have no data-* attributes.</p>
+  <div class="single-test key-undefined">Check Me!</div>
+  <p><strong>String Key Only</strong> - The div below should have no data-* attributes.</p>
+  <div class="single-test string-key">Check Me!</div>
+  <p><strong>Key and Value (String)</strong> - The div below should have data-lot-test="Key / Value Single Node Test".</p>
+  <div class="single-test key-and-value">Check Me!</div>
+  <p><strong>Object Key</strong> - The div below should have data-lot-test="This is some demo text." and data-lot-reason="Because we are testing stringifying objects.".</p>
+  <div class="single-test object-key">Check Me!</div>
+  <p><strong>Key and Value (Object)</strong> - The div below should have data-lot-test="{"test": "This is some demo text.", "reason": "Because we are testing stringifying objects."}".
+  <div class="single-test object-value">Check Me!</div>
+  <p><strong>Key and Value (Array)</strong> - The div below should have data-lot-test="[0,1,2,3,4,5,6,7,8,9]".</p>
+  <div class="single-test array-value">Check Me!</div>
+  <br />
+  <h3>Multi Node Tests</h3>
+  <p><strong>Key Undefined</strong> - The divs below should have no data-* attributes.</p>
+  <div class="multi-test key-undefined">Check Me!</div><div class="multi-test key-undefined">Check Me!</div>
+  <p><strong>String Key Only</strong> - The divs below should have no data-* attributes.</p>
+  <div class="multi-test string-key">Check Me!</div><div class="multi-test string-key">Check Me!</div>
+  <p><strong>Key and Value (String)</strong> - The divs below should have data-lot-test="Key / Value Single Node Test".</p>
+  <div class="multi-test key-and-value">Check Me!</div><div class="multi-test key-and-value">Check Me!</div>
+  <p><strong>Object Key</strong> - The divs below should have data-lot-test="This is some demo text." and data-lot-reason="Because we are testing stringifying objects.".</p>
+  <div class="multi-test object-key">Check Me!</div><div class="multi-test object-key">Check Me!</div>
+  <p><strong>Key and Value (Object)</strong> - The divs below should have data-lot-test="{"test": "This is some demo text.", "reason": "Because we are testing stringifying objects."}".
+  <div class="multi-test object-value">Check Me!</div><div class="multi-test object-value">Check Me!</div>
+  <p><strong>Key and Value (Array)</strong> - The divs below should have data-lot-test="[0,1,2,3,4,5,6,7,8,9]".</p>
+  <div class="multi-test array-value">Check Me!</div><div class="multi-test array-value">Check Me!</div>
+
+  <script src="jquery-1.9.1.js"></script>
+  <script src="lensoftruth.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.single-test.key-undefined').data();
+      $('.single-test.string-key').data('dummy');
+      $('.single-test.key-and-value').data('test', 'Key / Value Single Node Test');
+      $('.single-test.object-key').data({test: 'This is some demo text.', reason: 'Because we are testing stringifying objects.'});
+      $('.single-test.object-value').data('test',{test: 'This is some demo text.', reason: 'Because we are testing stringifying objects.'});
+      $('.single-test.array-value').data('test',[0,1,2,3,4,5,6,7,8,9]);
+      
+      $('.multi-test.key-undefined').data();
+      $('.multi-test.string-key').data('dummy');
+      $('.multi-test.key-and-value').data('test', 'Key / Value Single Node Test');
+      $('.multi-test.object-key').data({test: 'This is some demo text.', reason: 'Because we are testing stringifying objects.'});
+      $('.multi-test.object-value').data('test',{test: 'This is some demo text.', reason: 'Because we are testing stringifying objects.'});
+      $('.multi-test.array-value').data('test',[0,1,2,3,4,5,6,7,8,9]);
+    });
+  </script>
+<body>
