@@ -39,10 +39,10 @@
   var writeAttr = function(obj, k, v) {
     if (!(k[0] === '_' || k === 'events' || k === 'handle')) {
       if (typeof v === 'object' && window.JSON && window.JSON.stringify) {
-        obj.attr(k, window.JSON.stringify(v));
+        obj.attr(attrPrefix + k, window.JSON.stringify(v));
         return;
       }
-      obj.attr(k, v);
+      obj.attr(attrPrefix + k, v);
     }
   };
   
@@ -73,7 +73,7 @@
       return result;
     }
     // Write the single attribute to the DOM.
-    writeAttr(this, k, v);
+    writeAttr(this, key, value);
     return result;
   };
 })( jQuery );
